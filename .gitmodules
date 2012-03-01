@@ -1,0 +1,3 @@
+[submodule "hookio/hooks/Mailer"]
+	path = hookio/hooks/Mailer
+	url = git@github.com:balkian/Hookio-Mailer.git
