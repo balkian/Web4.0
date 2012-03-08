@@ -1,6 +1,6 @@
 [submodule "hookio/hooks/Mailer"]
 	path = hookio/hooks/Mailer
 	url = git@github.com:balkian/Hookio-Mailer.git
-[submodule "configuration"]
-	path = configuration
-	url = git@bitbucket.org:balkian/web4.0-configuration.git
+#[submodule "configuration"]
+#	path = configuration
+#	url = git@bitbucket.org:balkian/web4.0-configuration.git
