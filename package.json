@@ -1,0 +1,7 @@
+{
+"name": "Web4.0",
+"version" : "0.0.1",
+"dependencies":{
+	"Hook.io-mailer":"git+https://github.com/balkian/Hookio-Mailer.git"
+}
+}
