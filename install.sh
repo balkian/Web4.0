@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# For Ubuntu: apt-get install libavahi-compat-libdnssd-dev
 function fetch(){
 	echo "Fetching project from Github"
 	git clone https://github.com/balkian/Web4.0.git Web4.0
