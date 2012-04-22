@@ -5,7 +5,7 @@ var Hook = require('hook.io').Hook,
     app = express.createServer(),
     io = require('socket.io').listen(app);
 
-    app.configure(function () {
+app.configure(function () {
       app.use(stylus.middleware({ src: __dirname + '/public', compile: compile }));
       app.use(express.static(__dirname + '/public'));
       app.set('views', __dirname);
@@ -42,7 +42,7 @@ app.listen(3000, function () {
     console.log('app listening on http://' + addr.address + ':' + addr.port);
 });
 
-monkey.connect(1337);
+monkey.listen(1337);
 
 var nicknames = {};
 
@@ -51,11 +51,26 @@ io.sockets.on('connection', function (socket) {
     socket.on('user message', function (data) {
         console.log(data);
     });
-    socket.on('command', function (data,fn) {
+    socket.on('execute', function (data,fn) {
         var name = data['name'];
         var payload = data['payload'];
         console.log('Executing '+name+' with '+payload);
-        monkey.emit(name,payload,fn);
+        try{
+            monkey.emit(name,payload,fn);
+        }catch(err){
+            console.log("Error:"+err);
+        }
+    });
+    socket.on('client', function(data,fn){
+        var id = data['id'];
+        var name = data['name'];
+        var payload = data['payload'];
+        console.log('Clienting '+name+'@'+id+' with '+payload);
+        try{
+            nicknames[id].emit(name,payload,fn);
+        }catch(err){
+            console.log("Error:"+err);
+        }
     });
     socket.on('nickname', function (nick, fn) {
         if (nicknames[nick]) {
@@ -68,7 +83,7 @@ io.sockets.on('connection', function (socket) {
     });
     socket.on('disconnect', function () {
         if (!socket.nickname) return;
-        delete nicknames[socket.nickname];
+            delete nicknames[socket.nickname];
         });
 });
 
