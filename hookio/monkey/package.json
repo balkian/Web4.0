@@ -1,9 +1,10 @@
 {
     "name": "monkey.io"
   , "description": "Proxy between socket.io and hook.io. Based on chat.io"
-  , "version": "0.0.2"
+  , "version": "0.0.3"
   , "dependencies": {
-        "express": "2.5.5"
+        "hook.io-web40" : "*"
+      , "express": "2.5.5"
       , "jade": "0.16.4"
       , "stylus": "0.19.0"
       , "nib": "0.2.0"
