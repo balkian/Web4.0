@@ -45,7 +45,7 @@ app.listen(3000, function () {
     console.log('app listening on http://' + addr.address + ':' + addr.port);
 });
 
-monkey.listen();
+monkey.listen(1337);
 
 var nicknames = {};
 
