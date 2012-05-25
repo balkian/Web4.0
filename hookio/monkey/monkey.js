@@ -1,4 +1,4 @@
-var Hook = require('hook.io').Hook,
+var Hook = require('hook.io-web40').Web40Hook,
     express = require('express'),
     stylus = require('stylus'),
     nib = require('nib'),
@@ -27,7 +27,10 @@ app.configure(function () {
  */
 var monkey = new Hook({ 
   name: "monkey-hook",
-  debug: true
+  debug: true,
+  host: "0.0.0.0",
+  port: 1337
+
 });
 
 monkey.on('hook::ready', function () {
@@ -42,12 +45,11 @@ app.listen(3000, function () {
     console.log('app listening on http://' + addr.address + ':' + addr.port);
 });
 
-monkey.listen(1337);
+monkey.listen();
 
 var nicknames = {};
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
     socket.on('user message', function (data) {
         console.log(data);
     });
