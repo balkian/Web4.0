@@ -1,10 +1,11 @@
 {
 "name": "Web4.0",
-"version" : "0.0.2",
+"version" : "0.0.3",
 "dependencies":{
 	"socket.io":"*",
 	"hook.io":"*",
 	"Hook.io-mailer":"git+https://github.com/balkian/Hookio-Mailer.git",
-    "hook.io-web40": "*"
+    "hook.io-web40": "*",
+    "express" : "*"
 }
 }
